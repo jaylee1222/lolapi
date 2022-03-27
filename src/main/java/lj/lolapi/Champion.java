@@ -11,12 +11,14 @@ import java.util.List;
  * @author lj
  */
 public class Champion {
+    private String player_id;
     private String name;
-    private List<Integer> items;
+    private String[] items;
     
     public Champion() {}
     
-    public Champion(String name, List<Integer> items) {
+    public Champion(String player_id, String name, String[] items) {
+        this.player_id = player_id;
         this.name = name;
         this.items = items;
     }
@@ -25,15 +27,23 @@ public class Champion {
         this.name = name;
     }
     
-    public void setItems(List<Integer> items) {
+    public void setItems(String[] items) {
         this.items = items;
     }
     
-    public List<Integer> getItems() {
+    public void setPlayerId(String player_id) {
+        this.player_id = player_id;
+    }
+    
+    public String getPlayerId() {
+        return player_id;
+    }
+    
+    public String[] getItems() {
         return items;
     }
     
     public String getName() {
-        return this.name;
+        return name;
     }
 }
