@@ -22,12 +22,12 @@ import lj.lolapi.Champion;
  * @author lj
  */
 public class database {
-    String url = "connectstring";
+    String url = "jdbc:postgresql://localhost:5432/discordbot";
     String user;
     String password;
     
     public Connection connect() throws SQLException {
-        return DriverManager.getConnection(url,"lj","password");
+        return DriverManager.getConnection(url,user,password);
     }
     
     public long insertChampions(List<Champion> champions) {

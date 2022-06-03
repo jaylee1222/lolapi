@@ -26,7 +26,7 @@ public class playerInfo {
         JSONObject fives = new JSONObject(response.body());
         List<Player> players = new ArrayList();
         JSONArray fiveslist = fives.getJSONArray("entries");
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 10; i++) {
             Player player = new Player();
             player.setSummonerId(fiveslist.getJSONObject(i).getString("summonerId"));
             player.setSummonerName(fiveslist.getJSONObject(i).getString("summonerName"));
@@ -62,7 +62,7 @@ public class playerInfo {
         return players;
     }
     
-    public List<Player> getStuff(List<Player> players) throws IOException {
+    public void getStuff(List<Player> players) throws IOException {
         String itemName;
         for(int i = 0; i < players.size(); i++) {
             List<Champion> champions = new ArrayList();
@@ -93,13 +93,12 @@ public class playerInfo {
                         champion.setItems(itemNames);
                         champion.setPlayerId(players.get(i).getSummonerName());
                         champions.add(champion);
-                    }
+                    }    
                 }
             }
             players.get(i).setChampions(champions);
-            getChampions(players);
         }
-        return players;
+        getChampions(players);
     }
     
     public void getChampions(List<Player> players) throws IOException {
@@ -107,26 +106,25 @@ public class playerInfo {
 
         for(int i = 0; i < players.size(); i++) {
             List<Champion> champions = players.get(i).getChampions();
-            String[] itemsArray = champions.get(i).getItems();
             for (int j = 0; j < champions.size(); j++) {
+                String[] itemsArray = champions.get(j).getItems();
                 List<String> list = new ArrayList<String>();
                 for(String s : champions.get(j).getItems()) {
                     if(s != null && s.length() > 0) {
                        list.add(s);
                     }
                 }
-            itemsArray = list.toArray(new String[list.size()]);
-            champions.get(j).setItems(itemsArray);
+                itemsArray = list.toArray(new String[list.size()]);
+                champions.get(j).setItems(itemsArray);
             }
             Database.insertChampions(champions);
         }
     }
     
-    public List<Player> getPlayerInfo() throws IOException {
+    public void getPlayerInfo() throws IOException {
         List<Player> players = getTopPlayers();
         List<Player> players2 = getPlayerPuuids(players);
         List<Player> players3 = getPlayerMatches(players2);
-        List<Player> players4 = getStuff(players3);
-        return players4;
+        getStuff(players3);
     }
 }
