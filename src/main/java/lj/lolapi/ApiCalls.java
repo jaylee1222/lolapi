@@ -20,12 +20,12 @@ import org.json.simple.parser.JSONParser;
  */
 public class ApiCalls {
     
-    final String RIOT_TOKEN = token;
+    final String RIOT_TOKEN = "RGAPI-71059edd-1696-4514-ba3e-7299bf7743cb";
     
     public String getItemNames(int itemid) {
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader("/Users/lj/Documents/GitHub/lolapi/src/main/resources/static/item.json"));
+            Object obj = parser.parse(new FileReader("src/main/resources/static/item.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             

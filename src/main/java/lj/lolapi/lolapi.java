@@ -33,7 +33,6 @@ public class lolapi {
         ex.printStackTrace();
         }
         players.getPlayerInfo();
-    System.out.println(prop.getProperty("key"));
     }
     
 

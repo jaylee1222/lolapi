@@ -19,7 +19,6 @@ import org.json.JSONObject;
  */
 public class playerInfo {
     ApiCalls apicalls = new ApiCalls();
-    String SOURCE_JSON = "item.json";
     
     public List<Player> getTopPlayers() {
         HttpResponse<String> response = apicalls.Get5v5s();
