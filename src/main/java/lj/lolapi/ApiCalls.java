@@ -20,7 +20,7 @@ import org.json.simple.parser.JSONParser;
  */
 public class ApiCalls {
     
-    final String RIOT_TOKEN = "RGAPI-71059edd-1696-4514-ba3e-7299bf7743cb";
+    final String RIOT_TOKEN = "token";
     
     public String getItemNames(int itemid) {
         JSONParser parser = new JSONParser();
