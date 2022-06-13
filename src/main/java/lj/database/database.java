@@ -27,7 +27,7 @@ public class database {
     String password;
     
     public Connection connect() throws SQLException {
-        return DriverManager.getConnection(url,"lj","HadleyL908");
+        return DriverManager.getConnection(url,user,password);
     }
     
     public long insertChampions(List<Champion> champions) {
